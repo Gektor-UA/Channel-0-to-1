@@ -1,6 +1,6 @@
-// *Створюємо дві константи, яким передаємо всі можливості плагіна gulp який ми встановили 
+// *Створюємо константи, яким передаємо всі можливості плагіна gulp який ми встановили 
 // *(у файлі package.json в графі "devDependencies" вказано "gulp": "^4.0.2" ну або інша версія)
-const {src, dest, watch, parallel, series} = require('gulp');
+const { src, dest, watch, parallel, series } = require('gulp');
 
 // *Створюємо константу, якій передаємо всі можливості плагіна gulp-sass та sass
 const scss = require('gulp-sass')(require('sass'));
@@ -38,27 +38,88 @@ const webp = require('gulp-webp');
 // TODO Цей плагін потрібен для того, щоб зменшувати картиники формату jpeg, png, svg
 const imagemin = require('gulp-imagemin');
 
-// *Створюємо константу, якій передаємо всі можливості плагіна gulp-cached
+// *Створюємо константу, якій передаємо всі можливості плагіна gulp-newer
 // TODO Цей плагін потрібен для того, щоб працювати з кешом
 const newer = require('gulp-newer');
 
+// *Створюємо константу, якій передаємо всі можливості плагіна gulp-svg-sprite
+// TODO Цей плагін потрібен для того, щоб працювати з картинками у форматі svg
+const svgSprite = require('gulp-svg-sprite');
 
-// *Функція для конвертації картинок у формат avif, якщо не підтримується то у формат webp ну і надалі у формат png 
+// *Створюємо константу, якій передаємо всі можливості плагіна gulp-fonter
+// TODO Цей плагін потрібен для того, щоб конвертувати будь-які шрифти в будь-які :)
+const fonter = require('gulp-fonter');
+
+// *Створюємо константу, якій передаємо всі можливості плагіна gulp-ttf2woff2
+// TODO Цей плагін потрібен для того, щоб конвертувати шрифти у форматі ttf у формат woff2
+const ttf2woff2 = require('gulp-ttf2woff2');
+
+// *Створюємо константу, якій передаємо всі можливості плагіна gulp-include
+// TODO Цей плагін потрібен для того, щоб інклудити сторінки
+const include = require('gulp-include');
+
+
+// *Функція для конвертації шрифтів у формат woff2
+// *Для запуску потрібно в терміналі написати gulp pages або автоматичне надаштування далі
+function pages() {
+    return src('app/pages/*.html')
+        .pipe(include({
+            includePaths: 'app/components'
+        }))
+        .pipe(dest('app'))
+        .pipe(browserSync.stream()) // Оновлюємо сторінку
+}
+// *---------------------------------------------------------------------------------------
+
+
+// *Функція для конвертації шрифтів у формат woff2
+// *Для запуску потрібно в терміналі написати gulp fonts або автоматичне надаштування далі
+function fonts() {
+    return src('app/fonts/src/*.*')
+        .pipe(fonter({
+            formats: ['woff', 'ttf']
+        }))
+        .pipe(src('app/fonts/*.ttf'))
+        .pipe(ttf2woff2())
+        .pipe(dest('app/fonts'))
+
+}
+// *---------------------------------------------------------------------------------------
+
+
+// *Функція для конвертації картинок у формат avif, якщо не підтримується то у формат webp ну і надалі у формат jpg 
 // *Для запуску потрібно в терміналі написати gulp images або автоматичне надаштування далі
 function images() {
     return src(['app/images/src/*.*', '!app/images/src/*.svg'])
-    .pipe(newer('app/images/dist'))
-    .pipe(avif({ quality: 50 }))
+        .pipe(newer('app/images'))
+        .pipe(avif({ quality: 50 }))
 
-    .pipe(src('app/images/src/*.*'))
-    .pipe(newer('app/images/dist'))
-    .pipe(webp())
-    
-    .pipe(src('app/images/src/*.*'))
-    .pipe(newer('app/images/dist'))
-    .pipe(imagemin())
+        .pipe(src('app/images/src/*.*'))
+        .pipe(newer('app/images'))
+        .pipe(webp())
 
-    .pipe(dest('app/images/dist'))
+        .pipe(src('app/images/src/*.*'))
+        .pipe(newer('app/images'))
+        .pipe(imagemin())
+
+        .pipe(dest('app/images'))
+}
+// *---------------------------------------------------------------------------------------
+
+
+// *Функція для конвертації картинок у формат svg
+// *Для запуску потрібно в терміналі написати gulp sprite або автоматичне надаштування далі
+function sprite() {
+    return src('app/images/*.svg')
+        .pipe(svgSprite({
+            mode: {
+                stack: {
+                    sprite: '../sprite.svg',
+                    example: true
+                }
+            }
+        }))
+        .pipe(dest('app/images'))
 }
 // *---------------------------------------------------------------------------------------
 
@@ -67,9 +128,9 @@ function images() {
 // *Для запуску потрібно в терміналі написати gulp styles або автоматичне надаштування далі
 function styles() {
     return src('app/scss/style.scss')
-        .pipe(autoprefixer({overrideBrowserslist: ['last 10 version']}))
+        .pipe(autoprefixer({ overrideBrowserslist: ['last 10 version'] }))
         .pipe(concat('style.min.css')) // Конкатинація всіх файлів та переіменування фінального
-        .pipe(scss({outputStyle: 'compressed'})) // Перетворення файлу scss в css
+        .pipe(scss({ outputStyle: 'compressed' })) // Перетворення файлу scss в css
         .pipe(dest('app/css')) // Збереження файлу в задану папку
         .pipe(browserSync.stream()) // Оновлюємо сторінку
 }
@@ -86,7 +147,7 @@ function scripts() {
         .pipe(uglify())
         .pipe(dest('app/js'))
         .pipe(browserSync.stream()) // Оновлюємо сторінку
-        
+
 }
 // *---------------------------------------------------------------------------------------
 
@@ -104,6 +165,7 @@ function watching() {
     watch(['app/scss/style.scss'], styles)
     watch(['app/images/src'], images)
     watch(['app/js/main.js'], scripts)
+    watch(['app/components/*', 'app/pages/*'], pages)
     watch(['app/*.html']).on('change', browserSync.reload)
 }
 // *---------------------------------------------------------------------------------------
@@ -112,7 +174,7 @@ function watching() {
 // *Функція для видалення теки dist
 function cleanDist() {
     return src('dist')
-    .pipe(clean())
+        .pipe(clean())
 }
 // *---------------------------------------------------------------------------------------
 
@@ -121,22 +183,30 @@ function cleanDist() {
 function building() {
     return src([
         'app/css/style.min.css',
-        'app/images/dist/*.*',
+        '!app/images/**/*.html',
+        'app/images/*.*',
+        '!app/images/*.svg',
+        'app/images/sprite.svg',
+        'app/fonts/*.*',
         'app/js/main.min.js',
         'app/**/*.html'
-    ], {base: 'app'})
-    .pipe(dest('dist'))
+    ], { base: 'app' })
+        .pipe(dest('dist'))
 }
 // *---------------------------------------------------------------------------------------
 
 
 exports.styles = styles;
 exports.images = images;
+exports.fonts = fonts;
+exports.pages = pages;
+exports.sprite = sprite;
 exports.scripts = scripts;
 exports.watching = watching;
+exports.building = building;
 
 // *Запуск всіх функцій паралельно за допомогою плагіна gulp
-exports.default = parallel(styles, images, scripts, watching);
+exports.default = parallel(styles, images, scripts, pages, watching);
 // *--------------------------------------------------------
 
 // *Автоматичне видалення теки dits та аново її створення та збереження туди зжатих файлів
