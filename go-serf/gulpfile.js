@@ -26,6 +26,43 @@ const autoprefixer = require('gulp-autoprefixer');
 // TODO Цей плагін потрібен для того, щоб видаляти вказані теки перед build
 const clean = require('gulp-clean');
 
+// *Створюємо константу, якій передаємо всі можливості плагіна gulp-avif
+// TODO Цей плагін потрібен для того, щоб конвертувати картинки у формат avif
+const avif = require('gulp-avif');
+
+// *Створюємо константу, якій передаємо всі можливості плагіна gulp-webp
+// TODO Цей плагін потрібен для того, щоб конвертувати картинки у формат webp
+const webp = require('gulp-webp');
+
+// *Створюємо константу, якій передаємо всі можливості плагіна gulp-imagemin
+// TODO Цей плагін потрібен для того, щоб зменшувати картиники формату jpeg, png, svg
+const imagemin = require('gulp-imagemin');
+
+// *Створюємо константу, якій передаємо всі можливості плагіна gulp-cached
+// TODO Цей плагін потрібен для того, щоб працювати з кешом
+const newer = require('gulp-newer');
+
+
+// *Функція для конвертації картинок у формат avif, якщо не підтримується то у формат webp ну і надалі у формат png 
+// *Для запуску потрібно в терміналі написати gulp images або автоматичне надаштування далі
+function images() {
+    return src(['app/images/src/*.*', '!app/images/src/*.svg'])
+    .pipe(newer('app/images/dist'))
+    .pipe(avif({ quality: 50 }))
+
+    .pipe(src('app/images/src/*.*'))
+    .pipe(newer('app/images/dist'))
+    .pipe(webp())
+    
+    .pipe(src('app/images/src/*.*'))
+    .pipe(newer('app/images/dist'))
+    .pipe(imagemin())
+
+    .pipe(dest('app/images/dist'))
+}
+// *---------------------------------------------------------------------------------------
+
+
 // *Функція для перекодування файла scss в файл css
 // *Для запуску потрібно в терміналі написати gulp styles або автоматичне надаштування далі
 function styles() {
@@ -57,20 +94,17 @@ function scripts() {
 // *Функція для перекодування файла scss в файл css
 // *Для запуску потрібно в терміналі написати gulp styles або автоматичне надаштування далі
 function watching() {
-    watch(['app/scss/style.scss'], styles)
-    watch(['app/js/main.js'], scripts)
-    watch(['app/*.html']).on('change', browserSync.reload)
-}
-// *---------------------------------------------------------------------------------------
-
-
-// *Функція для автоматичного оновення сторінки після змін у файлах
-function browsersync() {
+    // *Функція для автоматичного оновення сторінки після змін у файлах
     browserSync.init({
         server: {
             baseDir: "app/"
         }
     });
+    // *===============================================================
+    watch(['app/scss/style.scss'], styles)
+    watch(['app/images/src'], images)
+    watch(['app/js/main.js'], scripts)
+    watch(['app/*.html']).on('change', browserSync.reload)
 }
 // *---------------------------------------------------------------------------------------
 
@@ -87,6 +121,7 @@ function cleanDist() {
 function building() {
     return src([
         'app/css/style.min.css',
+        'app/images/dist/*.*',
         'app/js/main.min.js',
         'app/**/*.html'
     ], {base: 'app'})
@@ -96,12 +131,12 @@ function building() {
 
 
 exports.styles = styles;
+exports.images = images;
 exports.scripts = scripts;
 exports.watching = watching;
-exports.browsersync = browsersync;
 
 // *Запуск всіх функцій паралельно за допомогою плагіна gulp
-exports.default = parallel(styles, scripts, browsersync, watching);
+exports.default = parallel(styles, images, scripts, watching);
 // *--------------------------------------------------------
 
 // *Автоматичне видалення теки dits та аново її створення та збереження туди зжатих файлів
