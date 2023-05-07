@@ -36,7 +36,6 @@ function styles() {
         .pipe(dest('app/css')) // Збереження файлу в задану папку
         .pipe(browserSync.stream()) // Оновлюємо сторінку
 }
-exports.styles = styles;
 // *---------------------------------------------------------------------------------------
 
 
@@ -52,7 +51,6 @@ function scripts() {
         .pipe(browserSync.stream()) // Оновлюємо сторінку
         
 }
-exports.scripts = scripts;
 // *---------------------------------------------------------------------------------------
 
 
@@ -63,7 +61,6 @@ function watching() {
     watch(['app/js/main.js'], scripts)
     watch(['app/*.html']).on('change', browserSync.reload)
 }
-exports.watching = watching;
 // *---------------------------------------------------------------------------------------
 
 
@@ -75,7 +72,6 @@ function browsersync() {
         }
     });
 }
-exports.browsersync = browsersync;
 // *---------------------------------------------------------------------------------------
 
 
@@ -98,6 +94,11 @@ function building() {
 }
 // *---------------------------------------------------------------------------------------
 
+
+exports.styles = styles;
+exports.scripts = scripts;
+exports.watching = watching;
+exports.browsersync = browsersync;
 
 // *Запуск всіх функцій паралельно за допомогою плагіна gulp
 exports.default = parallel(styles, scripts, browsersync, watching);
