@@ -1,0 +1,455 @@
+html{
+    box-sizing: border-box;
+}
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+@font-face {
+    font-family: 'Corporate-A-Bold';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/Corporate-A-Bold.woff2') format('woff2'),
+         url('../fonts/Corporate-A-Bold.woff') format('woff');
+}
+body{
+    font-family: 'Roboto Condensed', sans-serif;
+    /* background: #070A1B; */
+    background: linear-gradient(180deg, #070A1B 0%, #2A3170 100%);
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 400;
+    color: #fff;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+button{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+ul{
+    list-style: none;
+}
+img{
+    max-width: 100%;
+}
+.section__title{
+    font-family: 'Corporate-A-Bold';
+    font-size: 18px;
+    line-height: 22px;
+    color: #F402A2;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+.container{
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+/* Header */
+.header{
+    margin-bottom: 150px;
+    background: #070A1B;
+}
+.header__top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+.header__logo{
+    margin-left: 115px;
+}
+.list{
+    display: flex;
+}
+/* .list__item + .list__item{
+    margin-left: 30px;
+} */
+.list__item:not(:last-child){
+    margin-right: 30px;
+}
+.list__link{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background .3s;
+}
+.list__link:hover{
+    background-color: #C1A1D2;
+}
+.header__content{
+    background-image: url('../images/header-bg.png');
+    min-height: calc(100vh + 100px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+.header__content::before{
+    position: absolute;
+    content: '';
+    background-image: url('../images/logo-1.svg');
+    width: 50px;
+    height: 50px;
+    left: 50%;
+    bottom: -25px;
+    transform: translateX(-50%);
+}
+.title{
+    font-family: 'Corporate-A-Bold';
+    font-size: 72px;
+    line-height: 86px;
+    margin-bottom: 5px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.title-descr{
+    margin-bottom: 50px;
+    font-size: 24px;
+    line-height: 29px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Concept */
+.concept{
+    margin-bottom: 150px;
+}
+.concept__inner{
+    max-width: 900px;
+    margin-left: auto;
+}
+.concept__text{
+    margin-bottom: 25px;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+/* Premier */
+.premier{
+    margin-bottom: 150px;
+}
+.premier__inner{
+    display: flex;
+    gap: 60px;
+    /* justify-content: space-between; */
+}
+/* .premier__column{
+    max-width: 570px;
+} */
+.premier__text{
+    margin-bottom: 22px;
+}
+.premier__img{
+    margin-bottom: 20px;
+}
+.premier__more{
+    display: block;
+    font-family: 'Corporate-A-Bold';
+    border: 1px solid #F402A2;
+    font-size: 18px;
+    line-height: 22px;
+    font-style: 700;
+    color: #F402A2;
+    padding: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all .3s; /* Включает эффект замедления изменения цвета при наведении */
+}
+.premier__more:hover{
+    border: 1px solid #53A1CB;
+    color: #53A1CB;
+}
+/* video */
+.video{
+    margin-bottom: 150px;
+}
+.video__img{
+    margin-bottom: 25px;
+    transition: all .3s;
+}
+.video__btn{
+    font-family: 'Corporate-A-Bold';
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* gap: 10px; */
+    width: 100%;
+    text-transform: uppercase;
+    padding: 14px;
+    border: 1px solid #F402A2;
+    font-size: 18px;
+    line-height: 22px;
+    color: #F402A2;
+    transition: all .3s;
+}
+.video__btn:hover{
+    border: 1px solid #53A1CB;
+    color: #53A1CB;
+}
+.video__btn path{
+    transition: all .3s;
+}
+.video__btn:hover path{
+    fill: #53A1CB;
+}
+.video__btn span{
+    padding-top: 2px;
+    margin-left: 10px;
+}
+
+/* design */
+.design__interior{
+    display: grid;
+    grid-template-columns: 255px 255px auto 330px;
+    grid-template-rows: auto auto;
+    gap: 14px 44px;
+    margin-bottom: 100px;
+}
+.design__interior-img{
+    /* 
+    Занимает две линии сверху вниз
+    и крайнюю линию "-1" 
+    */
+    grid-column: 2/-1;
+}
+.design__cell-one{
+    /* 
+    В данном примере при помощи grid мы создали мнимую таблицу
+    с двумя строками и четермя колонками. 
+    В данной таблице по факту есть 3 мнимые линии: Верхняя, средняя и нижняя.
+    Данное свойство говорит о том, что эта ячейка должна растяваться 
+    на размер всех трех линий.
+    */
+    grid-row: 1/3;
+}
+.design__cell-two{
+    /* 
+    Аналогично пердыдущейзаписи, только в данном случае
+    начало ячейки будет идти от самой нижней линии
+    */
+    grid-row-end: -1;
+    display: flex;
+    align-items: flex-end;
+}
+.design__cell-three{
+        /* 
+    Аналогично пердыдущейзаписи, только в данном случае
+    начало ячейки будет идти от самой нижней линии в строках
+    и самой крайней правой линиии в столбах
+    */
+    grid-row-end: -1;
+    grid-column-end: -1;
+    display: flex;
+    align-items: flex-end;
+}
+.design__cell-text{
+    margin-bottom: 15px;
+}
+
+/* design-slider */
+.design-slider{
+    padding-bottom: 25px;
+}
+.design-slider__item{
+    margin: 0 30px;
+}
+.slick-track{
+    margin-left: -65px;
+}
+.arrow{
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    bottom: 0;
+    left: 50%;   
+}
+.arrow-left{
+    transform: translateX(-80px);
+}
+.arrow-right{
+    transform: translateX(30px);
+}
+
+/* design__box */
+.design__box{
+    max-width: 590px; 
+    padding: 0 10px;
+    display: flex;
+    margin: 150px auto;
+    margin-bottom: 150px;
+    gap: 60px;
+}
+.design__box-column{
+    width: 255px;
+}
+
+.design__box-text{
+    margin-bottom: 15px;
+}
+
+/* design__last */
+.design__last-img{
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover; /*Аналог background-size: cover */
+}
+
+/* Footer */
+.footer{
+    background: #070A1B;
+}
+.footer__inner{
+    display: flex;
+    justify-content: space-between;
+    height: 300px;
+    align-items: center;
+}
+
+@media(max-width: 1366px){
+    .footer__inner{
+        height: 150px;
+    }
+}
+
+@media(max-width: 1020px){
+    .design__interior{
+        display: block;
+    }
+    .design__interior-img{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .design__cell-three .design__interior-img{
+        max-width: 100%;
+        width: auto;
+        margin: 0 auto;
+    }
+}
+
+@media(max-width: 768px){
+    .header{
+        margin-bottom: 75px;
+    }
+    .header__logo {
+        margin-left: 0;
+    }
+    .logo__img{
+        width: 180px;
+    }
+    .list__item:not(:last-child) {
+        margin-right: 15px;
+    }
+    .list__link {
+        width: 35px;
+        height: 35px;
+    }
+    .title{
+        font-size: 55px;
+        line-height: 66px;
+    }
+    .title-descr {
+        font-size: 18px;
+        line-height: 21px;
+    }
+
+    .concept{
+        margin-bottom: 75px;
+    }
+    .concept__text{
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .premier{
+        margin-bottom: 75px;
+    }
+    .premier__inner{
+        display: block;
+    }
+    .premier__text{
+        font-size: 16px;
+        line-height: 19px;
+    }
+    .premier__img{
+        display: block;
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .video{
+        margin-bottom: 75px;
+    }
+
+    .design__box{
+        margin: 75px auto;
+    }
+}
+
+@media(max-width: 620px){
+    .footer__inner{
+        flex-wrap: wrap;
+        align-content: center;
+    }
+    .footer .list{
+        width: 100%;
+        margin-top: 25px;
+        justify-content: center;
+    }
+}
+
+@media(max-width: 520px){
+    .header__top{
+        flex-wrap: wrap;
+        align-content: center;
+    }
+    .list{
+        justify-content: center;
+        padding-top: 10px;
+        width: 100%;
+    }
+    .title{
+        font-size: 34px;
+        line-height: 41px;
+    }
+
+    .design__box{
+        display: block;
+    }
+    .design__box-column{
+        width: 100%;
+    }
+
+    .footer__inner{
+        flex-direction: column;
+    }
+    .footer__link{
+        padding-top: 20px;
+    }
+    .footer .list{
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media(max-width: 360px){
+    .design-slider__item{
+        margin: 0;
+    }
+    .slick-track{
+        margin-left: 0;
+    }
+}

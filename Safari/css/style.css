@@ -1,0 +1,788 @@
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400; 
+    font-size: 18px;
+    line-height: 140%;
+    color: #1F1E1E;
+}
+
+a{
+    text-decoration: none; /* Уберает подчеркивание под ссылкой */
+    color: inherit; /* Наследие родительского класса */
+}
+
+.title {
+    text-align: center;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 130%;
+    }
+
+.container{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 auto;
+    /* border: 3px solid black; */
+}
+
+/* Блок header */
+.header{
+    background-image: url('../images/header-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+.header__inner{
+    display: flex; /* Задаем родителю значение flex. Размещаем все дочерние элементы в строку 
+                    Это свойство позволяет нам размещать дочерние эементы любым способом в любое место*/
+    flex-direction: column; /* Меняем ось размещения  дочерних элементов на вертикалную (размещаем в колонку) */
+    justify-content: space-between; /* Раскидывает все элементы по краям, относительно друг друга */
+    min-height: 100vh; /* размещает картинку фона на весь экран */
+}
+
+.header__top{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Дает возможность перемещать блоки на следущую строку */
+    align-items: center;
+    padding: 16px 0 49px;    
+}
+
+.header__phone{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 130%;
+    color: white;
+}
+
+.header__phone-number{
+    font-weight: 400;
+    margin-left: 19px;
+    padding: 12px 31px 13px 31px;
+    background: #886239;
+    border-radius: 22px;
+}
+
+.menu{
+    width: 100%; /* Задаем максимальную ширину для нашей навигационной панели */
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    margin-top: 15px;
+    padding: 27px 0 24px;
+}
+
+.menu__list{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.header__title{ 
+    font-family: 'PT Serif', serif;
+    font-size: 90px;
+    font-weight: 700;
+    line-height: 130%;
+    text-align: center;
+    margin-bottom: auto;
+}
+
+.header__descr{
+    font-weight: 700;
+    font-size: 20px;
+    max-width: 420px;
+    margin-bottom: 20px;
+}
+
+.header__btn{
+    display: inline-block;
+    font-size: 18px;
+    color: #FFFFFF;
+    padding: 19px 54px 20px 55px;
+    background-color: #886239;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+
+ .header__arrow{
+    text-align: center;
+    margin-bottom: 15px;
+} 
+
+/* Блок "Направления" */
+.direction{
+    padding: 100px 0;
+}
+
+.deriction__inner{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 32px;
+}
+
+.direction__img{
+    display: block;
+}
+
+.direction__text{
+    font-size: 16px;
+    border: 1px solid #D9D9DE;
+    border-top: none;
+    padding: 10px 19px 14px;
+}
+
+.travel-info{
+    background-image: url('../images/travel-info-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    padding: 30px 0 50px;
+}
+
+.travel-info__title {
+    color: white;
+    margin-bottom: 50px;
+}
+
+.travel-info__items{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 54px 67px;
+}
+
+.travel-info__img{
+    margin-bottom: 15px;
+}
+
+.travel-info__text{
+    color: white;
+    font-size: 16px;
+    line-height: 130%;
+}
+
+/* Блок "Популярные предложения" */
+.popular{
+    padding: 100px 0;
+}
+
+.popular__title{
+    margin-bottom: 40px;
+}
+
+.popular__items{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 32px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid #D9D9DE;
+}
+
+.popular__link{
+    padding: 16px 24px 19px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 256px;
+    line-height: 130%;
+}
+
+/* Обращение к определленному дочернему елементу толко в том случае, когда  между елементами не вставлено никаких посторонних блоков и т.п. */
+.popular__link:nth-child(3),
+.popular__link:nth-child(6){
+    grid-column: span 2; /* начинается в том же месте где и сейчас (а той же точке) и занимает 2 колонки */
+    grid-row: span 2; /* начинается в том же месте где и сейчас (а той же точке) и занимает 2 строки */
+}
+
+.popular__link-title{
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.popular__link-title--big {
+    font-size: 24px;
+}
+
+.popular__price{
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: auto;
+}
+
+.popular__country, .popular__time{
+    font-size: 16px;
+    line-height: 130%;
+    margin-bottom: 15px;
+}
+
+
+/* Блок "Карта Африки" */
+.map{
+    margin-bottom: 100px;
+}
+
+.map__title{
+    margin-bottom: 46px;
+}
+
+/* Блок "О сафари турах" */
+.about{
+    margin-bottom: 100px;
+}
+
+.about__inner{
+    display: grid;                      
+    grid-template-columns: 448px 640px; /* разделяем на два блока один 448 другой 640 по ширине */
+    grid-template-rows: repeat();
+    grid-gap: 32px;                     /* расстояние между блоками 32 */
+}
+
+
+.about__title{
+    text-align: left;
+    margin-bottom: 25px;
+}
+.about__text{
+    margin-bottom: 34px;
+}
+
+.about__link{
+    line-height: 19px;
+    font-size: 16px;
+    text-decoration-line: underline;
+    color: #C4C4C4;
+}
+
+.about__popup{
+    background-image: url('../images/video-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Блок "Фотогалерея" */
+.gallery{
+    padding: 49px 0 55px;
+    /* margin-bottom: 100px;  */
+    background: #886239;
+    color: #fff;
+}
+
+.gallery__top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-right: 160px;
+}
+
+.gallery__link{
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration-line: underline;
+}
+
+.gallery__item-inner{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 32px;
+}
+
+.slick-btn{
+    background-color: transparent; /* применяет такой же цвет как и  задний фон */
+    border: none;
+    cursor: pointer;
+    position: absolute; /* задаем двум  стрелочкам абсольтные позиции */
+    top: -85px;
+    right: 0;
+}
+
+.slick-prev{
+    right: 60px;
+}
+
+/* Блок "Сафари тур премиум класса" */
+.tour{
+    padding: 100px 0;
+}
+
+.tour__title{
+    margin-bottom: 77px;
+}
+
+.tour__box{
+    column-count: 2; /* Разделяет текст на два столбика */
+    column-gap: 46px; /* устанавливает расстояние между колонками */
+    border-bottom: 1px solid #D9D9DE;
+    padding-bottom: 50px;
+    margin-bottom: 44px;
+}
+
+.tour__text{
+    margin-bottom: 15px;
+}
+
+.tour__text span{
+    font-weight: 700;
+}
+
+.tour__info{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 70px;
+}
+
+.tour__info-item{
+    font-family: 'PT Serif', serif;
+    font-weight: bold;
+    font-size: 58px;
+    line-height: 60px;
+    color: #886239;
+    text-align: center;
+}
+
+.tour__info-text{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    color: #1F1E1E;
+}
+
+/* Блок "Забронируйте отдых в Африке" */
+.booking{
+    background: #EAEAEA;
+    min-height: 550px;
+    padding: 75px 0;
+}
+
+.bookking__title{
+    margin-bottom: 54px;
+}
+
+.booking__form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 830px;
+    margin: 0 auto;
+}
+
+.booking__input{
+    width: 256px;
+    height: 44px;
+    border: 1px solid #D9D9DE;
+    padding: 11px 14px 12px;
+    margin-bottom: 28px;
+    font-size: 16px;
+}
+.booking__input::placeholder,
+.booking__textarea::placeholder{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #C4C4C4;
+}
+
+.booking__textarea{
+    width: 100%;
+    height: 112px;
+    padding: 14px;
+    border: 1px solid #D9D9DE;
+    resize: none; /* Убирает ползунок внизу справа */
+    margin-bottom: 67px;
+}
+
+.booking__btn{
+    background: #886239;
+    border-radius: 30px;
+    border:none;
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+    padding: 20px 65px;
+    cursor: pointer;
+}
+
+.booking__label{
+    font-size: 16px;
+    line-height: 130%; 
+    text-decoration-line: underline;
+    color: #1F1E1E;
+    display: flex;
+    align-items: center;
+}
+
+.booking__checkbox{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    padding-left: 45px;
+}
+
+.booking__checkbox-style{
+    width: 26px;
+    height: 26px;
+    border: 2px solid #C4C4C4;
+    border-radius: 2px;
+    position: absolute;
+    margin-left: -45px;
+}
+
+.booking__checkbox:checked + .booking__checkbox-style::before{
+    content:'';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: #c4c4c4;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Блок "Подвал сайта footer" */
+.footer{
+    background: #1F1E1E;
+    padding: 80px;
+}
+
+.footer__logo{
+    text-align: center;
+    margin-bottom: 69px;
+}
+
+.footer__box{
+    display: flex;
+    justify-content: space-between;
+    color:#fff;
+    font-size: 14px;
+    line-height: 130%;
+    max-width: 830px;
+    margin: 0 auto;
+}
+
+.footer__info {
+    width: 225px;
+}
+.footer__box-title {
+    margin-bottom: 7px;
+    font-weight: 500;
+}
+.footer__copy {
+    margin-bottom: 3px;
+    opacity: 0.8;
+}
+.footer__link {
+    text-decoration: underline;
+}
+.footer__adress {
+    width: 165px;
+}
+.footer__adress-text {
+    opacity: 0.8;
+}
+.footer__contacts {
+    width: 210px;
+}
+.footer__phone {
+    opacity: 0.8;
+}
+.footer__mail {
+    opacity: 0.8;
+    display: block;
+}
+
+.menu__btn {
+    display: none;
+}
+
+@media (max-width: 1140px){
+    .deriction__inner{
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+    }
+
+    .direction__img{
+        width: 100%;
+    }
+
+    .about__inner{
+        grid-gap: 20px;
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .gallery__item-inner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery__item-img{
+        width: 100%;
+    }
+}
+
+@media (max-width: 990px){
+    .popular__link{
+        min-height: 200px;
+    }
+
+    .popular__items {
+        grid-gap: 10px;
+    }
+
+    .tour__info {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 30px;
+    }
+}
+
+@media (max-width: 800px) {
+    .header__phone span {
+        display: none;
+    }
+
+    .travel-info__items{
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 40px;
+    }
+
+    .popular__link:nth-child(3), 
+    .popular__link:nth-child(6){
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .popular__items{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .popular__link{
+        min-height: 320px;
+    }
+
+    .popular{
+        padding: 50px 0;
+    }
+
+    .map{
+        padding: 50px;
+    }
+
+    .map__iframe{
+        height: 400px;
+    }
+
+    .about__inner{
+        grid-gap: 20px;
+        grid-template-columns: 1fr;
+    }
+
+    .about__popup{
+        min-height: 400px;
+    }
+
+    .gallery{
+        padding-bottom: 50px;
+    }
+
+    .tour{
+        padding: 50px 0;
+    }
+
+    .tour__box{
+        column-count: 1;
+    }
+
+    .tour__title{
+        margin-bottom: 40px;
+    }
+
+    .tour__info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .booking{
+        padding: 50px 0;
+    }
+
+    .booking__input{
+        width: 100%;
+    }
+
+    .booking__label{
+        margin-left: 50px;
+        margin-top: -193px;
+        width: 100%;
+    }
+
+    .footer{
+        padding: 50px 0;
+    }
+
+    .footer__logo {
+        margin-bottom: 40px;
+    }
+
+    .footer__box{
+        display: block;
+        text-align: center;
+    }
+
+    .footer__info, .footer__adress{
+        margin: 0 auto 25px;
+    }
+
+    .footer__contacts{
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 560px) {
+    .header__inner{
+        padding: 0 10px;
+    }
+
+    .header__title{
+        font-size: 50px;
+    }
+
+    .menu__btn{
+        display: inline-block;
+        width: 40px;
+        height: 30px;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        position: absolute;
+        right: 10px;
+        top: 107px;
+    }
+
+    .menu__btn::after, .menu__btn::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        left: 0;
+        height: 2px;
+        background-color: #fff;
+    }
+
+    .menu__btn::before{
+        top: 0;
+    }
+
+    .menu__btn::after{
+        bottom: 0;
+    }
+
+    .menu__btn span {
+        display: block;
+        height: 2px;
+        background-color: #fff;
+    }
+
+    .menu__list{
+        transform: translateY(-200%);
+        display: block;
+        background-color: #886239;
+        padding: 10px 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+
+    .menu__list.menu__list--active{
+        transform: translateY(0);
+    }
+
+    .menu__link{
+        padding: 10px;
+        display: block;
+        text-align: center;
+    }
+
+    .logo{
+        width: 100%;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .header__phone-number{
+        margin-left: 0;
+    }
+
+    .menu {
+        border: none;
+    }
+
+    .deriction__inner{
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+
+    .direction{
+        padding: 50px 0;
+    }
+
+    .travel-info__items{
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 30px;
+    }
+
+    .title{
+        font-size: 28px;
+    }
+
+    .popular__items{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .gallery__item-inner {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .gallery__title{
+        width: 100%;
+        text-align: left;
+    }
+
+    .gallery__top{
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 460px) {
+    .deriction__inner{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .travel-info__items{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .tour__info {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 340px) {
+    .about__popup{
+        min-height: 280px;
+    }
+}

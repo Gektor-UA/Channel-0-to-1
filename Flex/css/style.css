@@ -1,0 +1,28 @@
+.text{
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #000;
+    width: 200px;
+}
+img{
+    padding: 20px;
+    /* display: inline-block; */
+}
+
+.box{
+    border:3px solid #ccc;
+    margin-bottom: 50px;
+    height: 600px;
+
+    display: flex;
+}
+
+.text-4{
+    align-self: center;
+    order: -1;
+    margin-left: auto;
+    margin-right: auto;
+}
+.text-3{
+    order: -2;
+}
