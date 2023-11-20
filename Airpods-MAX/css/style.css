@@ -71,7 +71,7 @@ body {
 }
 .title--m {
   display: inline-block;
-    transform: translate(-100px, 410px);
+  transform: translate(-100px, 435px);
 }
 .title--ax {
   position: relative;
@@ -79,3 +79,30 @@ body {
   transform: translate(-110px, 500px);
   z-index: -1;
 }
+
+/** === choose-color === */
+.choose-color {
+  padding: 45px 180px;
+  text-align: center;
+}
+.choose-color__title {
+  font-size: 36px;
+  font-weight: 700;
+  max-width: 557px;
+  margin: 0 auto;
+}
+.choose-color__text {
+  max-width: 557px;
+  margin: 40px auto;
+}
+.choose-color__list {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+}
+.choose-color__btn {
+  border-radius: 20px;
+  border: 1px solid #cdcdcd;
+  padding: 25px 35px;
+}
+/** === !!!!!!!!!!!! === */
