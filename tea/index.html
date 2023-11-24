@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +14,10 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  
+
+  <div class="menu--close"></div>
   <header class="header">
     <div class="container">
       <div class="header__inner">
@@ -23,7 +26,18 @@
         </a>
         <nav class="menu">
           <!-- ul.menu__list>li.menu__item*5>a.menu__link[href="#"] -->
+          <button class="menu__btn">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <ul class="menu__list">
+            <li class="menu__close">
+              <button class="menu__close-btn">
+                <img src="images/close.svg" alt="close">
+              </button>
+            </li>
             <li class="menu__item">
               <a class="menu__link" href="#">Black</a>
             </li>
@@ -38,6 +52,36 @@
             </li>
             <li class="menu__item">
               <a class="menu__link" href="#">Pu-erh</a>
+            </li>
+            <li class="mobile-nav">
+              <ul class="mobile-menu">
+                <li class="mobile-menu__item">
+                  <a class="mobile-menu__link" href="#">Contact Us</a>
+                </li>
+                <li class="mobile-menu__item">
+                  <a class="mobile-menu__link" href="#">Our Blog</a>
+                </li>
+                <li class="mobile-menu__item">
+                  <a class="mobile-menu__link" href="#">Shipping and Delivery</a>
+                </li>
+              </ul>
+              <ul class="mobile-actions">
+                <li class="mobile-actions__item">
+                  <a class="mobile-actions__link" href="#">
+                    <img src="images/cart.svg" alt="cart">
+                  </a>
+                </li>
+                <li class="mobile-actions__item">
+                  <a class="mobile-actions__link" href="#">
+                    <img src="images/user.svg" alt="user">
+                  </a>
+                </li>
+                <li class="mobile-actions__item">
+                  <a class="mobile-actions__link" href="#">
+                    <img src="images/search.svg" alt="search">
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
           <!-- ==================================================== -->
@@ -55,7 +99,7 @@
           </li>
           <li class="user-action__item">
             <a class="user-action__link" href="#">
-              <img src="images/search.svg" alt="user">
+              <img src="images/search.svg" alt="search">
             </a>
             <!-- <search>
               <form action="#">
@@ -71,10 +115,32 @@
     </div>
   </header>
 
-  <main class="main"></main>
+  <main class="main">
+
+    <section class="top">
+      <div class="container">
+        <div class="top__inner">
+          <h1 class="top__title">
+            A cup of tea is a moment of calm in the chaos of life
+          </h1>
+          <h3 class="top__text">
+            Wide selection of high-quality teas from all over the world, carefully curated by tea experts.
+          </h3>
+        </div>
+      </div>
+    </section>
+    <blockquote class="blockquote">
+      <p class="blockquote__text">
+        "Tea is not just a drink, it's a way of life and a way to connect with our loved ones."
+      </p>
+    </blockquote>
+
+  </main>
+
   <footer class="footer"></footer>
 
 
   <script src="js/main.js"></script>
 </body>
+
 </html>
