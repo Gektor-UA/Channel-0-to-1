@@ -156,11 +156,34 @@ a {
 }
 /* END ASSORTMENT STYLE */
 
+/* REVIEWS STYLE */
+.reviews {
+  margin-bottom: 150px;
+  padding: 60px 0;
+  background-color: #f7f2ea;
+}
+.reviews__list {
+  display: flex;
+  gap: 0 26px;
+}
+.reviews__item {
+  flex-basis: 280px;
+}
+.reviews__text {
+  font-size: 16px;
+  font-style: italic;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+.reviews__author {
+  font-weight: 600;
+  line-height: normal;
+  font-style: normal;
+}
+/* END REVIEWS STYLE */
+
 /* АДАПТИВ */
 @media screen and (max-width: 1000px) {
-  [class$="__title"] {
-    margin-bottom: 30px;
-  }
   .header__inner {
     min-height: auto;
   }
@@ -186,6 +209,21 @@ a {
   .assortment__list {
     gap: 0;
   }
+
+  /* REVIEWS STYLE */
+  .reviews {
+    margin-bottom: 120px;
+  }
+  .reviews__title {
+    margin-bottom: 60px;
+  }
+  .reviews__list {
+    justify-content: center;
+  }
+  .reviews__item:last-child {
+    display: none;
+  }
+  /* END REVIEWS STYLE */
 }
 @media screen and (max-width: 860px) {
   .menu__list {
@@ -272,6 +310,19 @@ a {
     justify-content: center;
     flex-wrap: wrap;
   }
+
+  /* REVIEWS STYLE */
+  .reviews__title {
+    margin-bottom: 60px;
+  }
+  .reviews__list {
+    flex-wrap: wrap;
+    gap: 30px 75px;
+  }
+  .reviews__item:last-child {
+    display: block;
+  }
+  /* END REVIEWS STYLE */
 }
 @media screen and (max-width: 680px) {
   .container {
@@ -290,6 +341,9 @@ a {
   }
 }
 @media screen and (max-width: 480px) {
+    [class$="__title"] {
+    margin-bottom: 30px;
+  }
   .header__inner {
     padding: 10px 0;
   }
@@ -308,10 +362,22 @@ a {
   .assortment__img {
     max-width: 170px;
   }
+
+  /* REVIEWS STYLE */
+  .reviews {
+    padding: 50px 0;
+    margin-bottom: 60px;
+  }
+  .reviews__list {
+    gap: 30px 20px;
+  }
+  .reviews__item {
+    flex-basis: 220px;
+  }
+  /* END REVIEWS STYLE */
 }
 @media screen and (max-width: 360px) {
   [class$="__title"] {
-    margin-bottom: 0;
     font-size: 24px;
   }
   .top__inner {
@@ -339,5 +405,24 @@ a {
   .assortment {
     margin-bottom: 80px;
   }
+
+  /* REVIEWS STYLE */
+  .reviews {
+    margin-bottom: 50px;
+  }
+  .reviews__title {
+    margin-bottom: 30px;
+  }
+  .reviews__item {
+    flex-basis: 100%;
+  }
+  .reviews__item + .reviews__item {
+    margin-top: 30px;
+  }
+  .reviews__item:nth-child(3),
+  .reviews__item:nth-child(4) {
+    display: none;
+  }
+  /* END REVIEWS STYLE */
 }
 /* КІНЕЦЬ АДАПТИВУ */
