@@ -5,7 +5,6 @@ body {
   line-height: 1.5;
   color: #151618;
   position: relative;
-  /* font-family: 'Cormorant', serif; */
 }
 
 a {
@@ -16,6 +15,15 @@ a {
   max-width: 1240px;
   padding: 0 20px;
   margin: 0 auto;
+}
+
+[class$="__title"] {
+  font-family: "Cormorant", serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 /* HEADER STYLE */
@@ -48,7 +56,7 @@ a {
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 .menu--close.menu--open {
   display: block;
@@ -124,8 +132,35 @@ a {
 }
 /* END BLOCKQUOTE STYLE */
 
+/* ASSORTMENT STYLE */
+.assortment {
+  margin-bottom: 150px;
+}
+.assortment__list {
+  display: flex;
+  align-items: center;
+  gap: 0 40px;
+  text-align: center;
+}
+.assortment__img {
+  max-width: 208px;
+  max-height: 208px;
+  width: 100%;
+}
+.assortment__name {
+  font-family: "Cormorant", serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 10px;
+}
+/* END ASSORTMENT STYLE */
+
 /* АДАПТИВ */
 @media screen and (max-width: 1000px) {
+  [class$="__title"] {
+    margin-bottom: 30px;
+  }
   .header__inner {
     min-height: auto;
   }
@@ -144,11 +179,18 @@ a {
   .blockquote {
     margin: 120px auto 135px;
   }
+
+  .assortment {
+    margin-bottom: 120px;
+  }
+  .assortment__list {
+    gap: 0;
+  }
 }
 @media screen and (max-width: 860px) {
   .menu__list {
     transform: translateY(-100%);
-    transition: all .5s ease 0s;
+    transition: all 0.5s ease 0s;
     transform-origin: top;
 
     position: absolute;
@@ -225,6 +267,11 @@ a {
   .blockquote {
     max-width: 640px;
   }
+
+  .assortment__list {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 @media screen and (max-width: 680px) {
   .container {
@@ -255,8 +302,18 @@ a {
   .top__title {
     line-height: normal;
   }
+  .assortment {
+    margin-bottom: 60px;
+  }
+  .assortment__img {
+    max-width: 170px;
+  }
 }
 @media screen and (max-width: 360px) {
+  [class$="__title"] {
+    margin-bottom: 0;
+    font-size: 24px;
+  }
   .top__inner {
     min-height: 367px;
   }
@@ -278,6 +335,9 @@ a {
     font-size: 16px;
     max-width: 340px;
     margin: 70px auto 80px;
+  }
+  .assortment {
+    margin-bottom: 80px;
   }
 }
 /* КІНЕЦЬ АДАПТИВУ */
