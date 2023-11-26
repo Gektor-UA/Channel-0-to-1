@@ -1,3 +1,17 @@
+/* !Прижимаємо футер до низу */
+html,
+body {
+  height: 100%;
+}
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  flex: 1 1 auto;
+}
+/* !Прижимаємо футер до низу */ 
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 20px;
@@ -415,7 +429,7 @@ a {
 }
 .footer__nav-phone::before,
 .footer__nav-email::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 50%;
@@ -442,7 +456,7 @@ a {
   gap: 20px;
 }
 .footer__social-link {
-display: grid;
+  display: grid;
 }
 
 .footer__bottom {
@@ -553,6 +567,25 @@ display: grid;
     gap: 30px 210px;
   }
   /* END PRIORITISE STYLE */
+
+  /* FOOTER STYLE */
+  .footer__inner {
+    margin-bottom: 55px;
+  }
+  .footer__blockquote {
+    width: 270px;
+    margin-top: 0;
+  }
+  .footer__nav-logo {
+    margin-right: 35px;
+  }
+  .footer__contacts {
+    width: 270px;
+  }
+  .footer__copy {
+    margin-right: 85px;
+  }
+  /* END FOOTER STYLE */
 }
 @media screen and (max-width: 860px) {
   .menu__list {
@@ -623,6 +656,35 @@ display: grid;
   .logo {
     margin: 0 auto;
   }
+  /* MAIN-BLOCK STYLE */
+  .main-blog__list {
+    padding: 0 45px;
+    gap: 30px 20px;
+  }
+  .main-blog__item {
+    flex-basis: 542px;
+  }
+  .main-blog__item-img {
+    max-width: 270px;
+  }
+  .main-blog__item:nth-child(even) {
+    margin-left: auto;
+  }
+  /* END MAIN-BLOCK STYLE */
+  /* FOOTER STYLE */
+  .footer__inner {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+  }
+  .footer__products,
+  .footer__company {
+    grid-row: span 3;
+  }
+  .footer__contacts {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+  }
+  /* END FOOTER STYLE */
 }
 @media screen and (max-width: 768px) {
   .header__inner {
@@ -654,19 +716,6 @@ display: grid;
   /* END REVIEWS STYLE */
 
   /* MAIN-BLOCK STYLE */
-  .main-blog__list {
-    padding: 0 45px;
-    gap: 30px 20px;
-  }
-  .main-blog__item {
-    flex-basis: 542px;
-  }
-  .main-blog__item-img {
-    max-width: 270px;
-  }
-  .main-blog__item:nth-child(even) {
-    margin-left: auto;
-  }
   /* END MAIN-BLOCK STYLE */
 
   /* MAILING-LIST STYLE */
@@ -680,6 +729,12 @@ display: grid;
     gap: 30px 133px;
   }
   /* END PRIORITISE STYLE */
+
+  /* FOOTER STYLE */
+  .footer {
+    padding-top: 50px;
+  }
+  /* END FOOTER STYLE */
 }
 @media screen and (max-width: 680px) {
   .container {
@@ -769,6 +824,47 @@ display: grid;
     gap: 50px 133px;
   }
   /* END PRIORITISE STYLE */
+
+  /* FOOTER STYLE */
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .footer__nav {
+    justify-content: center;
+  }
+  .footer__products,
+  .footer__company {
+    flex-basis: 40%;
+  }
+  .footer__blockquote {
+    flex-basis: 100%;
+    margin: 50px 0;
+  }
+  .footer__blockquote-text {
+    margin-bottom: 0;
+  }
+  .footer__blockquote-author span {
+    display: inline;
+  }
+  .footer__contacts {
+    flex-basis: 100%;
+  }
+  .footer__products-title,
+  .footer__company-title {
+    margin-bottom: 30px;
+  }
+  .footer__contacts-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .footer__social {
+    margin: 0 0 0 30px;
+  }
+  .footer__bottom {
+    justify-content: space-between;
+  }
+  /* END FOOTER STYLE */
 }
 @media screen and (max-width: 360px) {
   [class$="__title"] {
@@ -877,5 +973,23 @@ display: grid;
     margin-bottom: 10px;
   }
   /* END PRIORITISE STYLE */
+
+  /* FOOTER STYLE */
+  .footer__blockquote {
+    margin: 40px 0;
+  }
+  .footer__contacts-title {
+    margin-bottom: 10px;
+  }
+  .footer__contacts-text {
+    margin-bottom: 10px;
+  }
+  .footer__social {
+    margin: 40px 0 0;
+  }
+  .footer__copy {
+    margin-right: 53px;
+  }
+  /* END FOOTER STYLE */
 }
 /* КІНЕЦЬ АДАПТИВУ */
